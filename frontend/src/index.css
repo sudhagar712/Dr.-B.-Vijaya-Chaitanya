@@ -4,145 +4,175 @@
 
 @layer base {
   :root {
-    --color-navy-dark: #060B18;
-    --color-navy: #0B132B;
-    --color-cardio-red: #E63946;
-    --color-cardio-glow: rgba(230, 57, 70, 0.35);
-    --color-medical-blue: #0077B6;
-    --color-medical-cyan: #00B4D8;
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
   }
 
-  html {
-    scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  .dark {
+    --bg-main: #030712;
+    --text-main: #f8fafc;
+    --card-bg: #0b132b;
+    --card-border: rgba(255, 255, 255, 0.1);
   }
 
   body {
-    background-color: #FAFCFF;
-    color: #1E293B;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Custom Smooth Scrollbar */
+  /* Custom Medical Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #F1F5F9;
+    background: #f1f5f9;
   }
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
-    border-radius: 9999px;
+    background: #cbd5e1;
+    border-radius: 4px;
+    border: 1px solid rgba(230, 57, 70, 0.3);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #94A3B8;
+    background: #e63946;
   }
 }
 
-@layer components {
-  /* Subtle Medical ECG Grid Background */
-  .bg-ecg-grid {
-    background-size: 32px 32px;
-    background-image: 
-      linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-  }
+/* Cardiac Medical Grid Background - Crisp Clinical Light / Dark */
+.ecg-grid {
+  background-image: 
+    linear-gradient(rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(230, 57, 70, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 57, 70, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+}
 
-  .bg-ecg-grid-dark {
-    background-size: 28px 28px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  }
+.dark .ecg-grid {
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(230, 57, 70, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 57, 70, 0.02) 1px, transparent 1px);
+}
 
-  /* Medical Glassmorphism */
-  .glass-card {
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 10px 30px -10px rgba(11, 19, 43, 0.05);
-  }
+/* Ultra-Clean Clinical Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+}
 
-  .glass-card-hover {
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .glass-card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(11, 19, 43, 0.12);
-    border-color: rgba(230, 57, 70, 0.3);
-  }
+.dark .glass-panel {
+  background: rgba(11, 19, 43, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
 
-  .glass-card-dark {
-    background: rgba(14, 26, 56, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
-  }
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .glass-nav {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  }
+.glass-card:hover {
+  border-color: rgba(230, 57, 70, 0.4);
+  box-shadow: 0 12px 30px -5px rgba(230, 57, 70, 0.12), 0 0 20px rgba(2, 132, 199, 0.08);
+  transform: translateY(-4px);
+}
 
-  /* Pulsing Red Indicator */
-  .pulse-indicator {
-    position: relative;
-    display: inline-flex;
-  }
-  .pulse-indicator::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #E63946;
-    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    opacity: 0.6;
-  }
+.dark .glass-card {
+  background: linear-gradient(135deg, rgba(28, 37, 65, 0.5) 0%, rgba(11, 19, 43, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-  /* Text Gradient Utilities */
-  .text-gradient-navy {
-    background: linear-gradient(135deg, #0B132B 0%, #1E3264 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* 3D Transform Context */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
 
-  .text-gradient-cardio {
-    background: linear-gradient(135deg, #0B132B 0%, #E63946 80%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Clean Clinical Typography Gradients */
+.text-gradient-crimson {
+  background: linear-gradient(135deg, #0f172a 0%, #d90429 55%, #e63946 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-crimson {
+  background: linear-gradient(135deg, #ffffff 0%, #ff8585 45%, #e63946 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #0369a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 45%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-gold {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde047 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animated ECG Pulse line drawing */
+@keyframes ecgLinePulse {
+  0% {
+    stroke-dashoffset: 2000;
+  }
+  100% {
+    stroke-dashoffset: 0;
   }
 }
 
-/* Animations */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(230, 57, 70, 0.6);
-  }
+.animate-ecg-path {
+  stroke-dasharray: 2000;
+  animation: ecgLinePulse 5s linear infinite;
 }
 
-.glow-cardio {
-  animation: pulseGlow 2.5s ease-in-out infinite;
+/* Ambient Radial Glows (Crisp for Light Mode) */
+.radial-glow-red {
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
 }
 
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.radial-glow-cyan {
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
 }
+
+.radial-glow-blue {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+/* Smooth AOS Transitions across all animated elements */
+html {
+  scroll-behavior: smooth;
+}
+
+[data-aos] {
+  pointer-events: auto !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
