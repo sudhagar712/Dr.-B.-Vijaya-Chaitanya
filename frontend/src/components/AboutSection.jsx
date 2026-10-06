@@ -12,7 +12,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden ecg-grid">
+    <section id="about" className="py-20 relative overflow-hidden bg-white dark:bg-slate-950 ecg-grid">
       {/* Background glow effects */}
       <div className="absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full radial-glow-cyan pointer-events-none blur-3xl opacity-30" />
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] rounded-full radial-glow-red pointer-events-none blur-3xl opacity-30" />

@@ -4,31 +4,31 @@ import { ArrowRight, Calendar, HeartPulse, Stethoscope, Award, CheckCircle2, Shi
 
 export default function Hero({ onOpenAppointment }) {
   return (
-    <section id="home" className="relative min-h-[92vh] sm:min-h-screen pt-20 pb-12 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-20 overflow-hidden flex items-center">
+    <section id="home" className="relative min-h-[92vh] sm:min-h-screen pt-20 overflow-hidden flex items-center bg-slate-50 dark:bg-[#07131F]">
       {/* 1. Flagship Medstar Hospitals Architecture Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Crisp Architectural Image (Positioned with optical balance) */}
+        {/* Crisp Architectural Image (High-definition optical presence) */}
         <div
-          className="absolute inset-0 bg-cover bg-[position:center_top] sm:bg-[position:center_center] lg:bg-[position:85%_center] bg-no-repeat transition-transform duration-1000 ease-out transform scale-[1.02] hover:scale-105"
+          className="absolute inset-0 bg-cover bg-[position:center_top] sm:bg-[position:center_center] lg:bg-[position:75%_center] bg-no-repeat transition-transform duration-1000 ease-out transform scale-100"
           style={{
             backgroundImage: "url('/medstar_building.jpg')",
           }}
         />
 
-        {/* Layer A: Ambient Brand Blue/Teal Duotone Luminance */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#125083]/30 via-transparent to-[#41A490]/20 mix-blend-multiply dark:mix-blend-screen pointer-events-none" />
+        {/* Layer A: Ambient Clinical Blue & Teal Duotone Tint */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#125083]/20 via-transparent to-[#41A490]/15 pointer-events-none" />
 
-        {/* Layer B: Horizontal Readability Shield for Content (Smooth Fade Left-to-Right) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 via-55% to-white/35 dark:from-[#0B192C] dark:via-[#0B192C]/92 dark:via-55% dark:to-[#0B192C]/40 pointer-events-none" />
+        {/* Layer B: Balanced Directional Readability Overlay (Image is clearly visible with rich detail) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/50 via-50% to-white/15 dark:from-[#07131F]/80 dark:via-[#07131F]/55 dark:via-50% dark:to-[#07131F]/20 pointer-events-none" />
 
         {/* Layer C: Top & Bottom Seamless Edge Blenders */}
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white via-white/80 to-transparent dark:from-[#0B192C] dark:via-[#0B192C]/80 dark:to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white via-white/85 to-transparent dark:from-[#0B192C] dark:via-[#0B192C]/85 dark:to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/70 dark:from-[#07131F]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white dark:from-slate-950 to-transparent pointer-events-none" />
 
-        {/* Layer D: ECG Grid & Brand Radial Glow Accents */}
-        <div className="absolute inset-0 ecg-grid opacity-25 dark:opacity-20 pointer-events-none" />
-        <div className="absolute top-1/4 right-1/4 w-[550px] h-[550px] rounded-full bg-[#41A490]/15 dark:bg-[#41A490]/20 blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/10 w-[450px] h-[450px] rounded-full bg-[#125083]/15 dark:bg-[#125083]/25 blur-[130px] pointer-events-none" />
+        {/* Layer D: Subtle ECG Grid & Ambient Radial Accents */}
+        <div className="absolute inset-0 ecg-grid opacity-20 dark:opacity-15 pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#41A490]/10 dark:bg-[#41A490]/15 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/10 w-[450px] h-[450px] rounded-full bg-[#125083]/10 dark:bg-[#125083]/20 blur-[120px] pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -54,16 +54,7 @@ export default function Hero({ onOpenAppointment }) {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#125083]/40 to-transparent" />
               
-              {/* Top Left Live Status */}
-              <div className="absolute top-3 left-3 z-10">
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/80 border border-white/20 backdrop-blur-md shadow">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">
-                    Live Cath Lab & OPD
-                  </span>
-                </div>
-              </div>
-
+           
               {/* Top Right Medstar Tag */}
               <div className="absolute top-3 right-3 z-10">
                 <span className="px-2.5 py-1 rounded-full bg-[#125083] text-white text-[10px] font-mono font-bold uppercase tracking-wider shadow">
@@ -95,18 +86,13 @@ export default function Hero({ onOpenAppointment }) {
 
               {/* Doctor Details & Credentials */}
               <div className="text-center mt-3 space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#41A490]/10 border border-[#41A490]/30 text-[#125083] dark:text-[#41A490] text-[10px] font-mono font-bold uppercase tracking-wider">
-                  <Award className="w-3 h-3 text-[#41A490]" />
-                  <span>FACC (USA) • FIC • TAVI Fellow</span>
-                </div>
+               
 
                 <h1 className="text-2xl sm:text-3xl font-extrabold font-heading text-[#125083] dark:text-white tracking-tight uppercase">
                   Dr. B. Vijaya <span className="text-gradient-crimson">Chaitanya</span>
                 </h1>
 
-                <p className="text-sm font-heading font-extrabold text-[#41A490]">
-                  Complex Hearts. Clearer Decisions.
-                </p>
+               
 
                 <p className="text-[11px] font-mono text-[#123B5D] dark:text-slate-300 font-semibold max-w-sm mx-auto">
                   Managing Director, Medstar Hospitals • Chief of Cardiovascular Sciences
@@ -204,11 +190,11 @@ export default function Hero({ onOpenAppointment }) {
 
               {/* 🔵 Primary Navy / Secondary Teal Button */}
               <a
-                href="#cardiac-3d"
+                href="#about"
                 className="btn btn-sm sm:btn-lg bg-white hover:bg-[#F5F8FA] dark:bg-slate-900 text-[#125083] dark:text-[#41A490] border-2 border-[#125083] dark:border-[#41A490] rounded-xl sm:rounded-2xl font-mono text-xs sm:text-sm gap-2 shadow-sm transition-all hover:scale-105"
               >
                 <HeartPulse className="w-4 h-4 text-[#41A490]" />
-                <span>View 3D Simulator</span>
+                <span>View More</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>

@@ -8,7 +8,6 @@ import Hero from './components/Hero';
 import ProceduralVolumeSection from './components/ProceduralVolumeSection';
 import InteractiveHeartSection from './components/InteractiveHeartSection';
 import PrecisionQuote from './components/PrecisionQuote';
-import StatCounter3D from './components/StatCounter3D';
 import AboutSection from './components/AboutSection';
 import JourneyTimeline from './components/JourneyTimeline';
 import ComplexCaseSection from './components/ComplexCaseSection';
@@ -168,8 +167,7 @@ export default function App() {
         {/* 4. Clinical Philosophy */}
         <PrecisionQuote />
 
-        {/* 5. 3D Tilt Experience Cards */}
-        <StatCounter3D />
+       
 
       
 

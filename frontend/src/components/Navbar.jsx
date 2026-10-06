@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Calendar, Menu, X, Sun, Moon, HeartPulse, ChevronRight, Activity, ShieldCheck } from 'lucide-react';
+import { Phone, Calendar, Menu, X, Sun, Moon, HeartPulse, ChevronRight, Activity, ShieldCheck, Stethoscope } from 'lucide-react';
 
 export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlaying, isDark, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,14 +13,13 @@ export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlayin
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Clean, focused navigation links (no overcrowding)
+  // Clean, focused navigation links
   const navLinks = [
     { name: 'About', href: '#about' },
- 
-    { name: '3D Heart', href: '#cardiac-3d' },
+    { name: 'Journey', href: '#journey' },
     { name: 'Expertise', href: '#expertise' },
-    { name: 'Experience', href: '#experience' },
     { name: 'Leadership', href: '#leadership' },
+    { name: '3D Heart', href: '#cardiac-3d' },
     { name: 'Insights', href: '#insights' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -28,67 +27,72 @@ export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlayin
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm py-2.5 sm:py-3'
-            : 'bg-white/80 dark:bg-cardio-dark/80 backdrop-blur-md border-b border-slate-100 dark:border-white/5 py-3 sm:py-4'
+            ? 'bg-white/60 dark:bg-[#08121C]/65 backdrop-blur-xl sm:backdrop-blur-2xl border-b border-slate-200/50 dark:border-white/10 shadow-[0_8px_30px_rgba(18,80,131,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] py-2 sm:py-2.5'
+            : 'bg-white/35 dark:bg-[#08121C]/35 backdrop-blur-md sm:backdrop-blur-xl border-b border-slate-200/30 dark:border-white/5 py-3 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
-            {/* Left: Doctor Brand Identity with Profile Thumbnail */}
-            <a href="#home" className="flex items-center gap-3 group">
+            {/* Left: Doctor Brand Identity with Sleek Avatar */}
+            <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 group">
              
+
               <div className="flex flex-col">
-                <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-1.5">
                   <span className="font-heading font-extrabold text-sm sm:text-base tracking-tight text-[#125083] dark:text-white group-hover:text-[#41A490] transition-colors">
                     Dr. B. Vijaya Chaitanya
                   </span>
                 </div>
+               
               </div>
             </a>
 
-            {/* Center: Clean & Minimal Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 bg-[#F5F8FA] dark:bg-slate-900/60 px-3 py-1 rounded-full border border-slate-200/80 dark:border-white/10 shadow-sm">
+            {/* Center: Frosted Glass Desktop Navigation Capsule */}
+            <nav className="hidden lg:flex items-center gap-1 bg-white/40 dark:bg-white/[0.04] backdrop-blur-xl px-2.5 py-1 rounded-full border border-slate-200/60 dark:border-white/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="px-3 py-1.5 text-xs font-mono font-medium text-[#123B5D] dark:text-slate-300 hover:text-[#125083] dark:hover:text-[#41A490] hover:bg-white dark:hover:bg-slate-800 rounded-full transition-all"
+                  className="px-3.5 py-1 text-xs font-mono font-medium text-[#123B5D] dark:text-slate-200 hover:text-[#125083] dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/10 rounded-full transition-all duration-200"
                 >
                   {link.name}
                 </a>
               ))}
             </nav>
 
-            {/* Right: Actions (Theme, Audio, Emergency Phone, Appointment CTA) */}
-            <div className="hidden sm:flex items-center gap-2.5">
+            {/* Right: Actions (Audio, Theme, Emergency Phone, Consultation CTA) */}
+            <div className="hidden sm:flex items-center gap-2">
+              
+          
+
               {/* Light / Dark Mode Toggle */}
               {onToggleTheme && (
                 <button
                   onClick={onToggleTheme}
-                  className="h-9 w-9 rounded-full flex items-center justify-center text-[#123B5D] dark:text-slate-300 hover:bg-[#F5F8FA] dark:hover:bg-slate-800 transition-colors"
+                  className="h-9 w-9 rounded-full flex items-center justify-center bg-white/40 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 text-[#123B5D] dark:text-slate-300 hover:bg-white/80 dark:hover:bg-white/15 backdrop-blur-md transition-all shadow-sm"
                   title="Toggle Light / Dark Mode"
                 >
-                  {isDark ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
+                  {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
                 </button>
               )}
 
-              {/* Emergency Quick Call (🟢 Secondary Teal) */}
+              {/* Emergency Cath Lab Hotline */}
               <a
                 href="tel:+918662499999"
-                className="h-9 px-3.5 rounded-full border border-[#41A490] text-[#41A490] hover:bg-[#41A490] hover:text-white flex items-center gap-1.5 font-mono text-xs font-semibold transition-colors"
+                className="h-9 px-3.5 rounded-full border border-[#41A490]/40 bg-[#41A490]/10 hover:bg-[#41A490] hover:text-white text-[#41A490] backdrop-blur-md flex items-center gap-1.5 font-mono text-xs font-semibold transition-all shadow-sm"
                 title="Emergency Cath Lab Hotline"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span className="hidden md:inline">Emergency</span>
               </a>
 
-              {/* Book Appointment CTA (🔴 Accent Red) */}
+              {/* Consultation CTA */}
               <button
                 onClick={onOpenAppointment}
-                className="h-9 px-4 rounded-full bg-[#EC242E] hover:bg-[#D01B24] text-white flex items-center gap-1.5 font-mono text-xs font-bold shadow-md hover:scale-105 transition-all"
+                className="h-9 px-4 rounded-full bg-gradient-to-r from-[#EC242E] to-[#D01B24] hover:shadow-[0_4px_16px_rgba(236,36,46,0.35)] text-white flex items-center gap-1.5 font-mono text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-sm"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Consultation</span>
@@ -97,45 +101,59 @@ export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlayin
 
             {/* Mobile Header Quick Actions */}
             <div className="flex sm:hidden items-center gap-1.5">
+              {onToggleAudio && (
+                <button
+                  onClick={onToggleAudio}
+                  className={`p-2 rounded-full border backdrop-blur-md transition-colors ${
+                    isAudioPlaying
+                      ? 'bg-[#EC242E]/10 border-[#EC242E]/40 text-[#EC242E]'
+                      : 'bg-white/40 dark:bg-white/5 border-slate-200/50 dark:border-white/10 text-slate-600 dark:text-slate-300'
+                  }`}
+                  aria-label="Toggle Heartbeat Sound"
+                >
+                  <HeartPulse className={`w-4 h-4 ${isAudioPlaying ? 'animate-pulse text-[#EC242E]' : ''}`} />
+                </button>
+              )}
+
               {onToggleTheme && (
                 <button
                   onClick={onToggleTheme}
-                  className="p-2 text-[#123B5D] dark:text-slate-300"
+                  className="p-2 rounded-full bg-white/40 dark:bg-white/5 border border-slate-200/50 dark:border-white/10 text-[#123B5D] dark:text-slate-300 backdrop-blur-md"
                   aria-label="Toggle Theme"
                 >
-                  {isDark ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4" />}
+                  {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
                 </button>
               )}
 
               <a
                 href="tel:+918662499999"
-                className="p-2 text-[#EC242E]"
-                title="Call Medstar Emergency"
+                className="p-2 rounded-full bg-[#EC242E]/10 border border-[#EC242E]/25 text-[#EC242E] backdrop-blur-md"
+                title="Call Emergency"
               >
                 <Phone className="w-4 h-4" />
               </a>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-[#125083] dark:text-slate-200 focus:outline-none"
-                aria-label="Open Navigation Menu"
+                className="p-2 rounded-xl bg-white/50 dark:bg-white/10 border border-slate-200/60 dark:border-white/10 text-[#125083] dark:text-white backdrop-blur-md focus:outline-none"
+                aria-label="Toggle Navigation Menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6 text-[#EC242E]" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#EC242E]" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
 
           </div>
         </div>
 
-        {/* Mobile Dropdown Drawer with Doctor Profile Summary */}
+        {/* Mobile Frosted Glass Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white/98 dark:bg-slate-950/98 border-b border-slate-200 dark:border-white/10 shadow-2xl px-5 py-5 transition-all animate-in slide-in-from-top-3 max-h-[85vh] overflow-y-auto">
+          <div className="lg:hidden bg-white/80 dark:bg-[#08121C]/85 backdrop-blur-2xl border-b border-slate-200/60 dark:border-white/10 shadow-2xl px-5 py-5 transition-all animate-in slide-in-from-top-3 max-h-[85vh] overflow-y-auto">
             {/* Mobile Profile Card */}
-            <div className="p-4 rounded-2xl bg-[#F5F8FA] dark:bg-slate-900 border border-slate-200 dark:border-white/10 mb-4 flex items-center gap-3.5">
+            <div className="p-3.5 rounded-2xl bg-white/60 dark:bg-white/[0.04] backdrop-blur-md border border-slate-200/60 dark:border-white/10 mb-4 flex items-center gap-3.5 shadow-sm">
               <img
                 src="/doctor.jpg"
                 alt="Dr. B. Vijaya Chaitanya"
-                className="h-14 w-14 rounded-2xl object-cover object-top border-2 border-[#125083] shadow-md"
+                className="h-12 w-12 rounded-xl object-cover object-top border-2 border-[#125083] shadow-md"
               />
               <div className="flex-1 min-w-0">
                 <h4 className="font-heading font-extrabold text-sm text-[#125083] dark:text-white truncate">
@@ -157,7 +175,7 @@ export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlayin
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between text-xs font-mono text-[#123B5D] dark:text-slate-200 hover:text-[#125083] dark:hover:text-[#41A490] py-2.5 px-3 rounded-xl hover:bg-[#F5F8FA] dark:hover:bg-slate-900 transition-colors"
+                  className="flex items-center justify-between text-xs font-mono text-[#123B5D] dark:text-slate-200 hover:text-[#125083] dark:hover:text-[#41A490] py-2.5 px-3 rounded-xl hover:bg-white/70 dark:hover:bg-white/[0.08] transition-colors"
                 >
                   <span className="font-medium">{link.name}</span>
                   <ChevronRight className="w-4 h-4 text-slate-400" />
@@ -166,20 +184,20 @@ export default function Navbar({ onOpenAppointment, onToggleAudio, isAudioPlayin
             </div>
 
             {/* Mobile Actions */}
-            <div className="pt-4 mt-2 border-t border-slate-100 dark:border-white/10 space-y-2">
+            <div className="pt-4 mt-3 border-t border-slate-200/60 dark:border-white/10 space-y-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenAppointment();
                 }}
-                className="btn btn-sm w-full bg-[#EC242E] hover:bg-[#D01B24] text-white border-none rounded-xl font-mono text-xs font-bold shadow-md"
+                className="w-full py-2.5 bg-gradient-to-r from-[#EC242E] to-[#D01B24] hover:bg-[#D01B24] text-white rounded-xl font-mono text-xs font-bold shadow-md flex items-center justify-center gap-2"
               >
                 <Calendar className="w-4 h-4" /> Book Consultation
               </button>
               
               <a
                 href="tel:+918662499999"
-                className="btn btn-sm w-full btn-outline border-[#41A490] text-[#41A490] rounded-xl font-mono text-xs font-semibold"
+                className="w-full py-2.5 border border-[#41A490]/40 bg-[#41A490]/10 text-[#41A490] rounded-xl font-mono text-xs font-semibold flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" /> Emergency: +91 866 249 9999
               </a>

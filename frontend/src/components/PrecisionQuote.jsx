@@ -35,7 +35,7 @@ export default function PrecisionQuote() {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-cardio-dark">
+    <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 ">
       {/* Background radial accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] radial-glow-blue pointer-events-none blur-3xl opacity-30" />
 

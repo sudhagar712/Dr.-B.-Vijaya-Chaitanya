@@ -51,7 +51,7 @@ export default function ComplexCaseSection({ onOpenAppointment }) {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-cardio-dark">
+    <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] radial-glow-red pointer-events-none blur-3xl opacity-20" />
 
@@ -74,7 +74,7 @@ export default function ComplexCaseSection({ onOpenAppointment }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left: Checklist of Clinical Expertise */}
-          <div className="lg:col-span-5 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm flex flex-col justify-between" data-aos="fade-right" data-aos-duration="850">
+          <div className="lg:col-span-5 p-8 rounded-3xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-white/10 shadow-sm flex flex-col justify-between" data-aos="fade-right" data-aos-duration="850">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-cardio-cyan font-bold block mb-4">
                 Clinical Expertise Highlights
