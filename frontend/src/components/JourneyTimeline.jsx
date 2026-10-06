@@ -100,18 +100,33 @@ export default function JourneyTimeline() {
                   }`}
                 >
                   {/* Timeline Center Node */}
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-2xl border-2 border-cardio-crimson bg-white dark:bg-cardio-dark shadow-md text-cardio-crimson">
+                  <div className={`absolute left-4 md:left-1/2 -translate-x-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-2xl border-2 transition-transform duration-300 group-hover:scale-110 ${
+                    step.current
+                      ? 'border-[#EC242E] bg-[#EC242E] text-white shadow-lg shadow-[#EC242E]/30 ring-4 ring-[#EC242E]/20'
+                      : 'border-cardio-crimson bg-white dark:bg-cardio-dark text-cardio-crimson shadow-md'
+                  }`}>
                     <Icon className="h-5 w-5" />
                   </div>
 
                   {/* Content Card */}
                   <div className={`ml-12 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-12' : 'md:pr-12'} w-full`}>
-                    <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-md transition-all duration-300 group">
+                    <div className={`p-6 rounded-3xl bg-white dark:bg-slate-900 border ${
+                      step.current
+                        ? 'border-[#EC242E]/40 dark:border-[#EC242E]/50 shadow-md ring-1 ring-[#EC242E]/20'
+                        : 'border-slate-200 dark:border-white/10 shadow-sm'
+                    } hover:shadow-md transition-all duration-300 group`}>
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="text-xl sm:text-2xl font-mono font-black text-cardio-crimson tracking-wider">
+                        <span className="text-xl sm:text-2xl font-mono font-black text-cardio-crimson tracking-wider flex items-center gap-2">
                           {step.year}
+                          {step.current && (
+                            <span className="inline-block w-2 h-2 rounded-full bg-[#EC242E] animate-ping" />
+                          )}
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold text-cardio-cyan bg-cardio-cyan/10 border border-cardio-cyan/25 uppercase">
+                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold uppercase ${
+                          step.current
+                            ? 'text-white bg-[#EC242E] border border-[#EC242E]'
+                            : 'text-cardio-cyan bg-cardio-cyan/10 border border-cardio-cyan/25'
+                        }`}>
                           {step.badge}
                         </span>
                       </div>
