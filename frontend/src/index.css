@@ -4,17 +4,24 @@
 
 @layer base {
   :root {
-    --bg-main: #f8fafc;
-    --text-main: #0f172a;
-    --card-bg: #ffffff;
-    --card-border: #e2e8f0;
+    --bg-main: #FFFFFF;
+    --bg-section: #F5F8FA;
+    --text-main: #123B5D;
+    --text-heading: #125083;
+    --primary-navy: #125083;
+    --secondary-teal: #41A490;
+    --accent-red: #EC242E;
+    --card-bg: #FFFFFF;
+    --card-border: #E2E8F0;
   }
 
   .dark {
-    --bg-main: #030712;
-    --text-main: #f8fafc;
-    --card-bg: #0b132b;
-    --card-border: rgba(255, 255, 255, 0.1);
+    --bg-main: #0B1926;
+    --bg-section: #08121C;
+    --text-main: #F5F8FA;
+    --text-heading: #88C0E8;
+    --card-bg: #0E2235;
+    --card-border: rgba(65, 164, 144, 0.2);
   }
 
   body {
@@ -24,72 +31,76 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading);
+  }
+
   /* Custom Medical Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #F5F8FA;
   }
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #CBD5E1;
     border-radius: 4px;
-    border: 1px solid rgba(230, 57, 70, 0.3);
+    border: 1px solid rgba(18, 80, 131, 0.3);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e63946;
+    background: #125083;
   }
 }
 
 /* Cardiac Medical Grid Background - Crisp Clinical Light / Dark */
 .ecg-grid {
   background-image: 
-    linear-gradient(rgba(2, 132, 199, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(230, 57, 70, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(230, 57, 70, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(18, 80, 131, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 80, 131, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(65, 164, 144, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65, 164, 144, 0.05) 1px, transparent 1px);
   background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
 }
 
 .dark .ecg-grid {
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(230, 57, 70, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(230, 57, 70, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(65, 164, 144, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65, 164, 144, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(18, 80, 131, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 80, 131, 0.06) 1px, transparent 1px);
 }
 
 /* Ultra-Clean Clinical Glassmorphism */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -5px rgba(18, 59, 93, 0.08);
 }
 
 .dark .glass-panel {
-  background: rgba(11, 19, 43, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(14, 34, 53, 0.85);
+  border: 1px solid rgba(65, 164, 144, 0.2);
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
 }
 
 .glass-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(18, 59, 93, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(230, 57, 70, 0.4);
-  box-shadow: 0 12px 30px -5px rgba(230, 57, 70, 0.12), 0 0 20px rgba(2, 132, 199, 0.08);
+  border-color: rgba(65, 164, 144, 0.5);
+  box-shadow: 0 12px 30px -5px rgba(18, 80, 131, 0.12), 0 0 20px rgba(65, 164, 144, 0.1);
   transform: translateY(-4px);
 }
 
 .dark .glass-card {
-  background: linear-gradient(135deg, rgba(28, 37, 65, 0.5) 0%, rgba(11, 19, 43, 0.8) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(14, 34, 53, 0.9) 0%, rgba(11, 25, 38, 0.95) 100%);
+  border: 1px solid rgba(65, 164, 144, 0.2);
 }
 
 /* 3D Transform Context */
@@ -103,37 +114,43 @@
 
 /* Clean Clinical Typography Gradients */
 .text-gradient-crimson {
-  background: linear-gradient(135deg, #0f172a 0%, #d90429 55%, #e63946 100%);
+  background: linear-gradient(135deg, #125083 0%, #EC242E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dark .text-gradient-crimson {
-  background: linear-gradient(135deg, #ffffff 0%, #ff8585 45%, #e63946 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFA8AC 45%, #EC242E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-cyan {
-  background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #0369a1 100%);
+.text-gradient-cyan, .text-gradient-teal {
+  background: linear-gradient(135deg, #125083 0%, #41A490 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.dark .text-gradient-cyan {
-  background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 45%, #00f0ff 100%);
+.dark .text-gradient-cyan, .dark .text-gradient-teal {
+  background: linear-gradient(135deg, #FFFFFF 0%, #A2E5D7 45%, #41A490 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(135deg, #123B5D 0%, #125083 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%);
+  background: linear-gradient(135deg, #78350F 0%, #B45309 60%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dark .text-gradient-gold {
-  background: linear-gradient(135deg, #fffbeb 0%, #fde047 50%, #d97706 100%);
+  background: linear-gradient(135deg, #FFFBEB 0%, #FDE047 50%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -153,17 +170,17 @@
   animation: ecgLinePulse 5s linear infinite;
 }
 
-/* Ambient Radial Glows (Crisp for Light Mode) */
+/* Ambient Radial Glows */
 .radial-glow-red {
-  background: radial-gradient(circle, rgba(230, 57, 70, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+  background: radial-gradient(circle, rgba(236, 36, 46, 0.08) 0%, rgba(245, 248, 250, 0) 70%);
 }
 
-.radial-glow-cyan {
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+.radial-glow-cyan, .radial-glow-teal {
+  background: radial-gradient(circle, rgba(65, 164, 144, 0.08) 0%, rgba(245, 248, 250, 0) 70%);
 }
 
-.radial-glow-blue {
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+.radial-glow-navy, .radial-glow-blue {
+  background: radial-gradient(circle, rgba(18, 80, 131, 0.08) 0%, rgba(245, 248, 250, 0) 70%);
 }
 
 /* Smooth AOS Transitions across all animated elements */

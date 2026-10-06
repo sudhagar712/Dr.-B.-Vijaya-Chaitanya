@@ -5,6 +5,7 @@ import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import ECGMonitorBar from './components/ECGMonitorBar';
 import Hero from './components/Hero';
+import ProceduralVolumeSection from './components/ProceduralVolumeSection';
 import InteractiveHeartSection from './components/InteractiveHeartSection';
 import PrecisionQuote from './components/PrecisionQuote';
 import StatCounter3D from './components/StatCounter3D';
@@ -15,7 +16,6 @@ import ExpertiseSection from './components/ExpertiseSection';
 import LeadershipSection from './components/LeadershipSection';
 import CredentialsSection from './components/CredentialsSection';
 import InsightsSection from './components/InsightsSection';
-import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import AppointmentModal from './components/AppointmentModal';
 import FloatingActions from './components/FloatingActions';
@@ -150,11 +150,20 @@ export default function App() {
         {/* 1. Hero with Doctor Executive Portrait on the Right */}
         <Hero onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
-        {/* 2. Real-time ECG Telemetry & Vitals Bar */}
-        <ECGMonitorBar bpm={bpm} />
+        {/* 2. Full-View Procedural Volume & Interventional Milestones */}
+        <ProceduralVolumeSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
-        {/* 3. Dedicated 3D Cardiac Vasculature & Stent Simulator Section (Moved below Hero) */}
-        <InteractiveHeartSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
+        {/* 6. About Dr. B. Vijaya Chaitanya */}
+        <AboutSection />
+
+        
+        {/* 7. Career & Fellowship Trajectory */}
+        <JourneyTimeline />
+
+         {/* 11. Degrees, Fellowships & Medical Associations */}
+        <CredentialsSection />
+
+       
 
         {/* 4. Clinical Philosophy */}
         <PrecisionQuote />
@@ -162,11 +171,8 @@ export default function App() {
         {/* 5. 3D Tilt Experience Cards */}
         <StatCounter3D />
 
-        {/* 6. About Dr. B. Vijaya Chaitanya */}
-        <AboutSection />
+      
 
-        {/* 7. Career & Fellowship Trajectory */}
-        <JourneyTimeline />
 
         {/* 8. Complex Decision Matrix */}
         <ComplexCaseSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
@@ -177,14 +183,23 @@ export default function App() {
         {/* 10. Healthcare Leadership at Medstar Tadepalli */}
         <LeadershipSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
-        {/* 11. Degrees, Fellowships & Medical Associations */}
-        <CredentialsSection />
+       
+
+
+
+
+
+ {/* 3. Dedicated 3D Cardiac Vasculature & Stent Simulator Section */}
+        <InteractiveHeartSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
+
+
+
+
 
         {/* 12. The Cardiologist's View - 7 Clinical Insights */}
         <InsightsSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
-        {/* 13. Searchable FAQ Accordion */}
-        <FAQSection />
+      
 
         {/* 14. Contact, Medstar Location & Directions */}
         <ContactSection onOpenAppointment={() => setIsAppointmentOpen(true)} />

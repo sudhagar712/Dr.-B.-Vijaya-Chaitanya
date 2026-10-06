@@ -76,13 +76,9 @@ export default function PrecisionQuote() {
             <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-200/70 dark:border-white/10">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
-                <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                  Cath Lab Angiography & Imaging Suite
-                </span>
+                
               </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-cardio-crimson/10 border border-cardio-crimson/30 text-cardio-crimson text-[10px] font-mono font-bold uppercase tracking-wider">
-                Fluoroscopic Guidance
-              </span>
+             
             </div>
 
             {/* Medical Quote Symbol */}
@@ -115,9 +111,7 @@ export default function PrecisionQuote() {
                 className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group hover:-translate-y-1.5 duration-300"
               >
                 <div>
-                  <div className={`h-12 w-12 rounded-2xl flex items-center justify-center mb-5 border ${item.bg} group-hover:scale-110 transition-transform`}>
-                    <Icon className={`w-6 h-6 ${item.color}`} />
-                  </div>
+                  
                   <h3 className="text-lg font-heading font-bold text-slate-900 dark:text-white mb-2">
                     {item.title}
                   </h3>
@@ -125,10 +119,7 @@ export default function PrecisionQuote() {
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-5 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center gap-1.5 text-xs font-mono text-slate-500 dark:text-slate-400">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-cardio-teal" />
-                  <span>Clinical Standard</span>
-                </div>
+             
               </div>
             );
           })}

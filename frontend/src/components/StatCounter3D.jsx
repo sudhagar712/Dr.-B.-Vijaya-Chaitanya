@@ -166,18 +166,12 @@ export default function StatCounter3D() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4" data-aos="fade-up" data-aos-duration="800">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cardio-cyan/30 bg-cardio-cyan/5 text-xs font-mono font-bold text-cardio-cyan uppercase tracking-widest">
-            Documented Procedural Volume
-          </div>
+         
           <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight uppercase">
             A Career Measured in <span className="text-gradient-crimson">Experience</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
-            Documented procedural experience from professional profile.
-          </p>
-          <p className="text-xs sm:text-sm font-mono text-cardio-crimson tracking-wider uppercase font-bold">
-            “Numbers describe volume. Experience describes what you do with it.”
-          </p>
+         
+         
         </div>
 
         {/* 3D Tilt Cards Grid with CountUp on Viewport */}

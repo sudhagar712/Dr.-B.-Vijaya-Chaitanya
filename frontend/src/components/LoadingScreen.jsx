@@ -82,11 +82,11 @@ export default function LoadingScreen({ onComplete }) {
                 className="w-28 h-28 sm:w-36 sm:h-36 fill-current text-cardio-crimson"
               >
                 <defs>
-                  {/* Luxury Medical Gradient */}
+                  {/* Brand Medical Gradient */}
                   <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#ff4d6d" />
-                    <stop offset="50%" stopColor="#e63946" />
-                    <stop offset="100%" stopColor="#b91c1c" />
+                    <stop offset="0%" stopColor="#EC242E" />
+                    <stop offset="50%" stopColor="#D01B24" />
+                    <stop offset="100%" stopColor="#125083" />
                   </linearGradient>
                   
                   {/* Subtle Arterial Sheen */}
@@ -125,14 +125,14 @@ export default function LoadingScreen({ onComplete }) {
           {/* Minimalist Progress Indicator */}
           <div className="mt-8 flex flex-col items-center space-y-2 relative z-10">
             {/* Elegant Minimal Counter */}
-            <span className="font-mono text-sm sm:text-base font-bold tracking-wider text-slate-800 dark:text-slate-200">
-              {progress}<span className="text-xs text-cardio-crimson">%</span>
+            <span className="font-mono text-sm sm:text-base font-bold tracking-wider text-[#123B5D] dark:text-slate-200">
+              {progress}<span className="text-xs text-[#EC242E]">%</span>
             </span>
 
             {/* Sleek Minimal Loading Line */}
             <div className="w-24 sm:w-28 h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-cardio-cyan to-cardio-crimson rounded-full transition-all duration-100 ease-out"
+                className="h-full bg-gradient-to-r from-[#125083] via-[#41A490] to-[#EC242E] rounded-full transition-all duration-100 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>

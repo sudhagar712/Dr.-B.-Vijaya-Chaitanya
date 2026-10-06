@@ -18,26 +18,26 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-slate-900 dark:bg-cardio-dark text-slate-300 border-t border-slate-800 dark:border-cardio-cyan/20 pt-16 pb-12 overflow-hidden">
+    <footer className="relative bg-[#08121C] text-slate-300 border-t border-[#125083]/30 pt-16 pb-12 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] radial-glow-red pointer-events-none blur-3xl opacity-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Footer Row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800 items-start" data-aos="fade-up" data-aos-duration="800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10 items-start" data-aos="fade-up" data-aos-duration="800">
           
           {/* Col 1: Identity & Credentials */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-2xl bg-cardio-crimson/20 border border-cardio-crimson/50 flex items-center justify-center text-cardio-crimson">
+              <div className="h-10 w-10 rounded-2xl bg-[#EC242E]/15 border border-[#EC242E]/40 flex items-center justify-center text-[#EC242E]">
                 <HeartPulse className="h-6 w-6 animate-pulse" />
               </div>
               <div>
                 <span className="font-heading font-extrabold text-lg text-white block">
                   DR. B. VIJAYA CHAITANYA
                 </span>
-                <span className="text-[11px] font-mono text-cardio-cyan uppercase tracking-wider block font-semibold">
+                <span className="text-[11px] font-mono text-[#41A490] uppercase tracking-wider block font-semibold">
                   Interventional Cardiologist
                 </span>
               </div>
@@ -50,14 +50,14 @@ export default function Footer() {
             </p>
 
             <div className="flex items-center gap-2 pt-2 text-xs font-mono text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-cardio-teal" />
+              <ShieldCheck className="w-4 h-4 text-[#41A490]" />
               <span>FACC (USA) • FIC • TAVI Fellow (Medanta)</span>
             </div>
           </div>
 
           {/* Col 2: Navigation Links */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-cardio-cyan font-bold">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-[#41A490] font-bold">
               Navigation Index
             </h4>
             <div className="grid grid-cols-2 gap-2">
@@ -75,16 +75,16 @@ export default function Footer() {
 
           {/* Col 3: Emergency Notice & Back to Top */}
           <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-cardio-crimson font-bold">
+            <h4 className="text-xs font-mono uppercase tracking-widest text-[#EC242E] font-bold">
               Emergency Cath Lab
             </h4>
-            <div className="p-4 rounded-2xl bg-cardio-crimson/10 border border-cardio-crimson/30">
+            <div className="p-4 rounded-2xl bg-[#EC242E]/10 border border-[#EC242E]/30">
               <span className="text-[11px] font-mono text-slate-300 block mb-1">
                 24/7 Primary PCI Response
               </span>
               <a
                 href="tel:+918662499999"
-                className="text-sm font-mono font-bold text-cardio-crimson hover:underline block"
+                className="text-sm font-mono font-bold text-[#EC242E] hover:underline block"
               >
                 +91 866 249 9999
               </a>

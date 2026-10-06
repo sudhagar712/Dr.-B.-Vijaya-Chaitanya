@@ -59,20 +59,20 @@ export default function AppointmentModal({ isOpen, onClose }) {
         {!isSubmitted ? (
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="h-10 w-10 rounded-2xl bg-cardio-crimson/10 border border-cardio-crimson/30 flex items-center justify-center text-cardio-crimson">
+              <div className="h-10 w-10 rounded-2xl bg-[#41A490]/10 border border-[#41A490]/30 flex items-center justify-center text-[#41A490]">
                 <HeartPulse className="w-5 h-5 animate-pulse" />
               </div>
               <div>
-                <span className="text-[10px] font-mono tracking-widest uppercase text-cardio-cyan font-bold">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-[#41A490] font-bold">
                   Clinical Consultation
                 </span>
-                <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-slate-900 dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#125083] dark:text-white">
                   Book an Appointment
                 </h3>
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 font-mono mb-6">
+            <p className="text-xs text-[#123B5D]/80 dark:text-slate-400 font-mono mb-6">
               Dr. B. Vijaya Chaitanya • Medstar Hospitals, Tadepalli & Vijayawada
             </p>
 
@@ -174,7 +174,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="btn btn-sm sm:btn-md w-full bg-gradient-to-r from-cardio-crimson to-cardio-ruby text-white border-none rounded-xl font-mono text-xs gap-2 shadow-md hover:from-cardio-ruby hover:to-cardio-crimson"
+                  className="btn btn-sm sm:btn-md w-full bg-[#EC242E] hover:bg-[#D01B24] text-white border-none rounded-xl font-mono text-xs gap-2 shadow-md transition-all hover:scale-[1.02]"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit & Confirm via WhatsApp</span>
@@ -184,7 +184,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
               <div className="text-center pt-2">
                 <p className="text-[11px] text-slate-500 font-mono">
                   For immediate cardiac emergencies, call Medstar 24/7:{' '}
-                  <a href="tel:+918662499999" className="text-cardio-crimson font-bold underline">
+                  <a href="tel:+918662499999" className="text-[#EC242E] font-bold underline">
                     +91 866 249 9999
                   </a>
                 </p>

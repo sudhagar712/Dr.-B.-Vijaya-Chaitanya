@@ -35,7 +35,7 @@ export default function FloatingActions() {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="group relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 text-slate-700 dark:text-slate-200 shadow-xl hover:bg-cardio-crimson hover:text-white dark:hover:bg-cardio-crimson dark:hover:text-white transition-all duration-300 hover:scale-110 active:scale-95"
+          className="group relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 text-slate-700 dark:text-slate-200 shadow-xl hover:bg-[#125083] hover:text-white dark:hover:bg-[#125083] dark:hover:text-white transition-all duration-300 hover:scale-110 active:scale-95"
           title="Back to Top"
           aria-label="Back to Top"
         >

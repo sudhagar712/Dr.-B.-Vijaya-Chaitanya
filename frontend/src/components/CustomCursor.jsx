@@ -60,26 +60,26 @@ export default function CustomCursor() {
       <div
         className={`fixed -translate-x-1/2 -translate-y-1/2 rounded-full border transition-all duration-100 ease-out ${
           isHovering
-            ? 'h-12 w-12 border-cardio-crimson/80 bg-cardio-crimson/10 shadow-[0_0_15px_rgba(230,57,70,0.3)]'
+            ? 'h-12 w-12 border-[#41A490] bg-[#41A490]/10 shadow-[0_0_15px_rgba(65,164,144,0.35)]'
             : isClicking
-            ? 'h-8 w-8 border-cardio-crimson bg-cardio-crimson/20 shadow-[0_0_20px_rgba(230,57,70,0.5)]'
-            : 'h-9 w-9 border-cardio-crimson/50 bg-transparent'
+            ? 'h-8 w-8 border-[#EC242E] bg-[#EC242E]/20 shadow-[0_0_20px_rgba(236,36,46,0.5)]'
+            : 'h-9 w-9 border-[#125083]/40 bg-transparent'
         }`}
         style={{
           left: `${trailingPos.x}px`,
           top: `${trailingPos.y}px`,
         }}
       >
-        <div className="absolute left-1/2 top-0 h-1.5 w-0.5 -translate-x-1/2 bg-cardio-crimson"></div>
-        <div className="absolute bottom-0 left-1/2 h-1.5 w-0.5 -translate-x-1/2 bg-cardio-crimson"></div>
-        <div className="absolute left-0 top-1/2 h-0.5 w-1.5 -translate-y-1/2 bg-cardio-crimson"></div>
-        <div className="absolute right-0 top-1/2 h-0.5 w-1.5 -translate-y-1/2 bg-cardio-crimson"></div>
+        <div className="absolute left-1/2 top-0 h-1.5 w-0.5 -translate-x-1/2 bg-[#41A490]"></div>
+        <div className="absolute bottom-0 left-1/2 h-1.5 w-0.5 -translate-x-1/2 bg-[#41A490]"></div>
+        <div className="absolute left-0 top-1/2 h-0.5 w-1.5 -translate-y-1/2 bg-[#41A490]"></div>
+        <div className="absolute right-0 top-1/2 h-0.5 w-1.5 -translate-y-1/2 bg-[#41A490]"></div>
       </div>
 
       {/* Center pinpoint cardiac dot */}
       <div
-        className={`fixed h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_0_8px_#e63946] transition-transform duration-75 ${
-          isHovering ? 'scale-150 bg-cardio-crimson' : 'bg-cardio-crimson'
+        className={`fixed h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_0_8px_#EC242E] transition-transform duration-75 ${
+          isHovering ? 'scale-150 bg-[#41A490]' : 'bg-[#EC242E]'
         }`}
         style={{
           left: `${position.x}px`,

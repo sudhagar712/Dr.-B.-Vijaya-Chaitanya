@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useInView } from 'framer-motion';
 
 /**
- * CountUpNumber with continuous loop support and viewport trigger
- * - Triggers immediately when scrolled into view ("antha section vantha run avanum")
- * - Continuously loops count-up animation while in view ("continous loop mari number run avanum")
- * - Smooth ease-out exponential deceleration curve
+ * CountUpNumber: Smooth ease-out exponential counter
+ * - Triggers smoothly whenever scrolled into view (scrolling up or scrolling down)
+ * - Holds cleanly on the final number without infinite looping
+ * - Automatically resets when scrolled out of view so it re-animates on return
+ * - Accepts optional external `triggerInView` to sync with parent section
  */
 export default function CountUpNumber({
   end,
@@ -13,16 +14,21 @@ export default function CountUpNumber({
   suffix = '+',
   prefix = '',
   className = '',
-  loop = true,
+  loop = false, // Default is false: NO continuous looping!
   pauseDuration = 3000,
+  threshold = 0.2,
+  triggerInView = null, // Optional parent in-view trigger
 }) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.15 });
+  const internalRef = useRef(null);
+  const internalInView = useInView(internalRef, { once: false, amount: threshold });
+
+  // Use external trigger if provided, else use internal ref in-view
+  const activeInView = triggerInView !== null ? triggerInView : internalInView;
 
   useEffect(() => {
-    if (!isInView) {
-      setCount(0); // Reset when scrolled out so it re-runs when scrolled back into view
+    if (!activeInView) {
+      setCount(0); // Reset when scrolled out of view so it re-runs when scrolled back
       return;
     }
 
@@ -49,7 +55,7 @@ export default function CountUpNumber({
           animationFrameId = requestAnimationFrame(animate);
         } else {
           setCount(end);
-          // Continuous loop: hold on final value for pauseDuration, then restart count-up
+          // Only loop if explicitly requested (defaults to false)
           if (loop && !isCancelled) {
             pauseTimeoutId = setTimeout(() => {
               if (!isCancelled) {
@@ -70,13 +76,13 @@ export default function CountUpNumber({
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       if (pauseTimeoutId) clearTimeout(pauseTimeoutId);
     };
-  }, [isInView, end, duration, loop, pauseDuration]);
+  }, [activeInView, end, duration, loop, pauseDuration]);
 
   // Format with standard thousand comma separators (e.g., 26,000)
   const formattedCount = count.toLocaleString('en-US');
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={internalRef} className={className}>
       {prefix}
       {formattedCount}
       {suffix}

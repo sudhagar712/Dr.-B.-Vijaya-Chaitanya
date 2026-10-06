@@ -149,9 +149,8 @@ The Pillars of Cardiac Prevention:
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4" data-aos="fade-up" data-aos-duration="850">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cardio-cyan/30 bg-cardio-cyan/5 text-xs font-mono font-bold text-cardio-cyan uppercase tracking-widest">
-            The Cardiologist's View
-          </div>
+         
+         
           <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight uppercase">
             Clinical <span className="text-gradient-cyan">Insights</span>
           </h2>

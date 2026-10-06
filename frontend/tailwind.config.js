@@ -8,18 +8,26 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          primary: '#125083',     // 🔵 Primary Navy Blue (#125083 -> Navbar, headings, buttons)
+          teal: '#41A490',        // 🟢 Secondary Teal (#41A490 -> Highlights, icons, secondary buttons)
+          red: '#EC242E',         // 🔴 Accent Red (#EC242E -> CTA / important highlights only)
+          white: '#FFFFFF',       // ⚪ Main Background (#FFFFFF)
+          softGray: '#F5F8FA',    // 🌫️ Section Background (#F5F8FA)
+          darkNavy: '#123B5D',    // 🔵 Dark Text (#123B5D)
+        },
         cardio: {
-          dark: '#0f172a',
-          navy: '#1e293b',
-          deep: '#334155',
-          crimson: '#E63946',
-          ruby: '#D90429',
-          cyan: '#0284C7',
-          teal: '#0D9488',
-          accent: '#2563EB',
+          dark: '#123B5D',        // Dark Text (#123B5D)
+          navy: '#125083',        // Primary Navy Blue (#125083)
+          deep: '#123B5D',        // Navy Dark (#123B5D)
+          crimson: '#EC242E',     // Accent Red (#EC242E)
+          ruby: '#D01B24',        // Deep Brand Red
+          cyan: '#41A490',        // Secondary Teal (#41A490)
+          teal: '#41A490',        // Hospital Green/Teal (#41A490)
+          accent: '#125083',      // Primary Navy (#125083)
           gold: '#D97706',
-          surface: '#FFFFFF',
-          surfaceLight: '#F8FAFC',
+          surface: '#FFFFFF',     // Main Background (#FFFFFF)
+          surfaceLight: '#F5F8FA',// Section Background (#F5F8FA)
           border: '#E2E8F0',
         }
       },
@@ -70,17 +78,17 @@ export default {
     themes: [
       {
         light: {
-          "primary": "#E63946",
-          "secondary": "#0284C7",
-          "accent": "#2563EB",
-          "neutral": "#0F172A",
-          "base-100": "#FFFFFF",
-          "base-200": "#F8FAFC",
-          "base-300": "#F1F5F9",
-          "info": "#0284C7",
-          "success": "#0D9488",
+          "primary": "#125083",      // 🔵 Primary Navy Blue
+          "secondary": "#41A490",    // 🟢 Secondary Teal
+          "accent": "#EC242E",       // 🔴 Accent Red
+          "neutral": "#123B5D",      // 🔵 Dark Text
+          "base-100": "#FFFFFF",     // ⚪ Main Background
+          "base-200": "#F5F8FA",     // 🌫️ Section Background
+          "base-300": "#E9F0F4",
+          "info": "#125083",
+          "success": "#41A490",
           "warning": "#D97706",
-          "error": "#D90429",
+          "error": "#EC242E",
         },
       },
       "dark",
