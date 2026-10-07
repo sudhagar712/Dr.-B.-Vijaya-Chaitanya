@@ -153,14 +153,14 @@ export default function App() {
         <ProceduralVolumeSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
         {/* 6. About Dr. B. Vijaya Chaitanya */}
-        <AboutSection />
+        <AboutSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
         
         {/* 7. Career & Fellowship Trajectory */}
         <JourneyTimeline />
 
          {/* 11. Degrees, Fellowships & Medical Associations */}
-        <CredentialsSection />
+        <CredentialsSection onOpenAppointment={() => setIsAppointmentOpen(true)} />
 
        
 

@@ -52,23 +52,7 @@
   }
 }
 
-/* Cardiac Medical Grid Background - Crisp Clinical Light / Dark */
-.ecg-grid {
-  background-image: 
-    linear-gradient(rgba(18, 80, 131, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(18, 80, 131, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(65, 164, 144, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(65, 164, 144, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
-}
 
-.dark .ecg-grid {
-  background-image: 
-    linear-gradient(rgba(65, 164, 144, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(65, 164, 144, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(18, 80, 131, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(18, 80, 131, 0.06) 1px, transparent 1px);
-}
 
 /* Ultra-Clean Clinical Glassmorphism */
 .glass-panel {

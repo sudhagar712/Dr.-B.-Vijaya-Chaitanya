@@ -34,7 +34,9 @@ export default {
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-        heading: ['Outfit', 'Plus Jakarta Sans', 'sans-serif']
+        heading: ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        script: ['"Caveat"', '"Dancing Script"', 'cursive'],
       },
       animation: {
         'heartbeat': 'heartbeat 1.2s ease-in-out infinite',

@@ -48,6 +48,30 @@ try {
   if (fs.existsSync(cathlabSrc)) {
     fs.copyFileSync(cathlabSrc, cathlabDest);
   }
+
+  // Cath-Lab screen with interventional cardiologist pointing at coronary angiogram
+  const complexCathlabSrc = 'C:/Users/Asus/.gemini/antigravity-ide/brain/267d0e96-dfdb-444f-a812-418dc7f5c594/complex_case_cathlab_1791397668648.jpg';
+  const complexCathlabDest = path.resolve(publicDir, 'complex_case_cathlab.jpg');
+  if (fs.existsSync(complexCathlabSrc)) {
+    fs.copyFileSync(complexCathlabSrc, complexCathlabDest);
+    console.log('✅ Cath lab screen image synced to public/complex_case_cathlab.jpg');
+  }
+
+  // 3D Translucent Crystalline Anatomical Cardiac Heart with ECG
+  const journeyHeartSrc = 'C:/Users/Asus/.gemini/antigravity-ide/brain/e4171643-5b6d-4d45-b5fc-2f4a79e98d01/journey_cardiac_heart_1791398371668.jpg';
+  const journeyHeartDest = path.resolve(publicDir, 'journey_heart.jpg');
+  if (fs.existsSync(journeyHeartSrc)) {
+    fs.copyFileSync(journeyHeartSrc, journeyHeartDest);
+    console.log('✅ Journey 3D heart asset synced to public/journey_heart.jpg');
+  }
+
+  // Reference UI mockup uploaded by user for About section
+  const aboutMockupSrc = 'C:/Users/Asus/.gemini/antigravity-ide/brain/c66d6d5d-59f8-4786-a62a-d5f529ff96a7/.user_uploaded/media_1791398771512.png';
+  const aboutMockupDest = path.resolve(publicDir, 'about_reference_mockup.png');
+  if (fs.existsSync(aboutMockupSrc)) {
+    fs.copyFileSync(aboutMockupSrc, aboutMockupDest);
+    console.log('✅ About reference mockup synced to public/about_reference_mockup.png');
+  }
 } catch (e) {
   console.log('Asset copy notice:', e.message);
 }
