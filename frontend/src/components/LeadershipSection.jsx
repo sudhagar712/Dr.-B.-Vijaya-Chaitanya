@@ -135,7 +135,7 @@ export default function LeadershipSection({ onOpenAppointment }) {
           <div className="lg:col-span-6 relative flex flex-col sm:flex-row items-center justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="850">
             
             {/* Doctor Composition Container with Blurred Hospital Corridor Backdrop */}
-            <div className="relative w-full max-w-lg lg:max-w-none flex items-end justify-center lg:justify-center">
+            <div className="relative w-full max-w-lg lg:max-w-none flex flex-col sm:flex-row items-center sm:items-end justify-center">
               
               {/* Blurred Corridor Background Panel */}
               <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-35 dark:opacity-20 pointer-events-none -z-10">
@@ -159,8 +159,8 @@ export default function LeadershipSection({ onOpenAppointment }) {
                 <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F9FD] dark:from-[#07131F] to-transparent pointer-events-none" />
               </div>
 
-              {/* Floating Stat Badges (Right side of doctor) */}
-              <div className="absolute right-0 sm:-right-4 lg:-right-2 top-2 sm:top-6 z-20 space-y-3.5 sm:space-y-4">
+              {/* Floating Stat Badges - Seamless on Mobile & Desktop */}
+              <div className="relative sm:absolute sm:right-0 lg:-right-2 top-0 sm:top-6 z-20 grid grid-cols-1 sm:grid-cols-1 gap-3 sm:space-y-4 mt-4 sm:mt-0 w-full sm:w-56 px-2 sm:px-0">
                 
                 {/* Badge 1: 200+ Beds */}
                 <div className="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 border border-white/80 dark:border-white/10 shadow-lg w-52 sm:w-56 space-y-1.5 transition-transform hover:-translate-y-0.5">

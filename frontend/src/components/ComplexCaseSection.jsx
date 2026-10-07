@@ -346,16 +346,16 @@ export default function ComplexCaseSection({ onOpenAppointment }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-xl border border-white/80 dark:border-white/10"
+                className="absolute bottom-3 right-3 sm:bottom-7 sm:right-7 z-20 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md px-3 sm:px-5 py-2 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl border border-white/80 dark:border-white/10"
               >
-                <div className="text-[10px] sm:text-[11px] font-bold tracking-[0.24em] text-[#5b677a] dark:text-slate-300 uppercase leading-[1.6]">
+                <div className="text-[9px] sm:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.24em] text-[#5b677a] dark:text-slate-300 uppercase leading-[1.5] sm:leading-[1.6]">
                   <div>PRECISION</div>
                   <div>PLANNING</div>
                   <div>BETTER</div>
                   <div>OUTCOMES</div>
                 </div>
                 {/* Coral horizontal underline bar */}
-                <div className="w-5 h-[2.5px] bg-[#eb4d4b] rounded-full mt-2.5" />
+                <div className="w-4 sm:w-5 h-[2px] sm:h-[2.5px] bg-[#eb4d4b] rounded-full mt-1.5 sm:mt-2.5" />
               </motion.div>
 
             </div>

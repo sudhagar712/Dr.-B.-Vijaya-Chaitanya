@@ -91,11 +91,11 @@ export default function InteractiveHeartSection({ onOpenAppointment }) {
         <div className="text-center mt-12">
           <button
             onClick={onOpenAppointment}
-            className="btn btn-md bg-[#EC242E] hover:bg-[#D01B24] text-white border-none rounded-xl font-mono text-xs sm:text-sm gap-2 shadow-md hover:scale-105 transition-all"
+            className="btn btn-md bg-[#EC242E] hover:bg-[#D01B24] text-white border-none rounded-xl font-mono text-xs sm:text-sm gap-2 shadow-md hover:scale-105 transition-all max-w-full h-auto py-3 px-4 whitespace-normal text-center"
           >
-            <Zap className="w-4 h-4 text-white" />
+            <Zap className="w-4 h-4 text-white shrink-0" />
             <span>Consult Dr. Vijaya Chaitanya for Angioplasty / TAVI</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </button>
         </div>
 

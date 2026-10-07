@@ -264,7 +264,7 @@ export default function JourneyTimeline() {
 
               {/* High-Resolution Crystalline 3D Heart Illustration with Subtle Floating */}
               <motion.div 
-                className="relative z-10 w-[290px] sm:w-[340px] h-[290px] sm:h-[340px] flex items-center justify-center"
+                className="relative z-10 w-[240px] sm:w-[340px] h-[240px] sm:h-[340px] flex items-center justify-center"
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -294,9 +294,9 @@ export default function JourneyTimeline() {
                 </svg>
               </motion.div>
 
-              {/* Floating Quote Badge (Replicated Exactly from Reference) */}
+              {/* Floating Quote Badge (Optimized Mobile Framing) */}
               <motion.div 
-                className="absolute left-0 sm:-left-3 top-6 sm:top-8 z-30 max-w-[215px] p-4 sm:p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-[0_12px_32px_rgba(18,59,93,0.12)] space-y-2.5"
+                className="absolute left-1 sm:-left-3 bottom-2 sm:bottom-auto sm:top-8 z-30 max-w-[170px] sm:max-w-[215px] p-3 sm:p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-[0_12px_32px_rgba(18,59,93,0.12)] space-y-1.5 sm:space-y-2.5"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}

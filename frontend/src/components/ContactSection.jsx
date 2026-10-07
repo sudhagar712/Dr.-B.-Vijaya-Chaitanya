@@ -30,7 +30,7 @@ export default function ContactSection({ onOpenAppointment }) {
           
           {/* Left Column: Doctor & Hospital Contact Details */}
           <div
-            className="lg:col-span-6 p-8 rounded-3xl bg-[#F5F8FA] dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-md flex flex-col justify-between space-y-8"
+            className="lg:col-span-6 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#F5F8FA] dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-md flex flex-col justify-between space-y-8"
             data-aos="fade-right"
             data-aos-duration="850"
           >

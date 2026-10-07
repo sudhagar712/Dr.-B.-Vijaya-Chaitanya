@@ -5,13 +5,32 @@ export default function Hero({ onOpenAppointment }) {
   return (
     <section 
       id="home" 
-      className="relative min-h-[92vh] sm:min-h-screen pt-24 pb-14 sm:pt-28 sm:pb-20 overflow-hidden flex items-center bg-white dark:bg-[#07131F]"
+      className="relative min-h-[92vh] sm:min-h-screen pt-24 pb-14 sm:pt-28 sm:pb-20 overflow-hidden flex items-center bg-[#EBF4FA] dark:bg-[#07131F]"
     >
-      {/* Clean Ambient Background (Building image removed) */}
+      {/* 1. Flagship Medstar Hospitals Architecture with Light Blue Medical Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <div className="absolute inset-0 ecg-grid opacity-10 pointer-events-none" />
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#41A490]/10 dark:bg-[#41A490]/15 blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/10 w-[450px] h-[450px] rounded-full bg-[#125083]/10 dark:bg-[#125083]/20 blur-[140px] pointer-events-none" />
+        {/* Architectural Image: Optimized mobile presence & clinical perspective */}
+        <div
+          className="absolute inset-0 bg-cover bg-[position:center_15%] sm:bg-[position:center_center] lg:bg-[position:80%_center] bg-no-repeat opacity-[0.52] sm:opacity-[0.28] dark:opacity-[0.32] sm:dark:opacity-[0.16] transition-all duration-700"
+          style={{
+            backgroundImage: "url('/medstar_building.jpg')",
+          }}
+        />
+
+        {/* Layer 1: Responsive Light Blue Readability Overlay (Mobile: translucent vertical wash so building is visible; Desktop: directional fade) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EBF4FA]/70 via-[#EBF4FA]/40 to-[#EBF4FA]/85 sm:bg-gradient-to-r sm:from-[#EBF4FA] sm:via-[#EBF4FA]/90 sm:to-[#DCECF8]/65 dark:from-[#07131F]/75 dark:via-[#07131F]/45 dark:to-[#07131F]/85 sm:dark:from-[#07131F] sm:dark:via-[#07131F]/92 sm:dark:to-[#0B2540]/55 pointer-events-none" />
+
+        {/* Layer 2: Ambient Clinical Blue & Teal Duotone Tint */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#125083]/10 via-transparent to-[#41A490]/10 dark:from-[#125083]/20 dark:to-[#41A490]/15 pointer-events-none" />
+
+        {/* Layer 3: Top & Bottom Seamless Edge Blenders */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#EBF4FA]/90 dark:from-[#07131F] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white dark:from-slate-950 via-[#EBF4FA]/40 dark:via-slate-950/40 to-transparent" />
+
+        {/* Layer 4: ECG Grid & Luminous Ambient Orbs */}
+        <div className="absolute inset-0 ecg-grid opacity-20 pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#41A490]/15 dark:bg-[#41A490]/15 blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/10 w-[450px] h-[450px] rounded-full bg-[#125083]/15 dark:bg-[#125083]/20 blur-[140px] pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -21,18 +40,18 @@ export default function Hero({ onOpenAppointment }) {
         {/* ========================================================================= */}
         <div className="block lg:hidden w-full space-y-5 text-center">
           
-          {/* Centered Doctor Profile Avatar */}
+          {/* Centered Doctor Profile Executive Portrait */}
           <div className="relative inline-block mx-auto pt-2" data-aos="fade-down" data-aos-duration="750">
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#125083] via-[#41A490] to-[#EC242E] blur-md opacity-70" />
-            <div className="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl mx-auto bg-slate-100 dark:bg-slate-800">
+            <div className="absolute -inset-2.5 rounded-3xl bg-gradient-to-tr from-[#125083] via-[#41A490] to-[#EC242E] blur-lg opacity-40" />
+            <div className="relative h-40 w-40 sm:h-48 sm:w-48 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl mx-auto bg-slate-100 dark:bg-slate-800">
               <img
                 src="/doctor.jpg"
                 alt="Dr. B. Vijaya Chaitanya"
                 className="w-full h-full object-cover object-top"
               />
             </div>
-            <div className="absolute bottom-1 right-1 bg-[#41A490] text-white rounded-full p-1.5 border-2 border-white dark:border-slate-800 shadow-md">
-              <ShieldCheck className="w-3.5 h-3.5" />
+            <div className="absolute -bottom-2 -right-2 bg-[#41A490] text-white rounded-full p-2 border-2 border-white dark:border-slate-800 shadow-lg">
+              <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
 

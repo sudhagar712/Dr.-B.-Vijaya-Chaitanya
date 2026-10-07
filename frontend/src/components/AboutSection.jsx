@@ -49,8 +49,8 @@ export default function AboutSection({ onOpenAppointment }) {
               {/* Clinical Card Wrapper */}
               <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden bg-white dark:bg-[#0B1A28] border border-slate-200/80 dark:border-white/10 shadow-[0_20px_50px_-15px_rgba(18,80,131,0.12)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.6)]">
                 
-                {/* Visual Canvas Height - 100% Fully Covered */}
-                <div className="relative h-[460px] sm:h-[520px] lg:h-[560px] xl:h-[600px] w-full overflow-hidden bg-white dark:bg-[#0B1A28]">
+                {/* Visual Canvas Height - Optimized for Mobile & Desktop */}
+                <div className="relative h-[390px] sm:h-[480px] lg:h-[560px] xl:h-[600px] w-full overflow-hidden bg-white dark:bg-[#0B1A28]">
                   
                   {/* Doctor Full Portrait - Full Edge-to-Edge Cover */}
                   <img
