@@ -73,7 +73,7 @@ export default function InteractiveHeartSection({ onOpenAppointment }) {
               >
                 <div>
                   <div className={`h-11 w-11 rounded-2xl flex items-center justify-center mb-4 border ${item.bg} ${item.color}`}>
-                    <Icon className="w-5 h-5" />
+                   
                   </div>
                   <h4 className="text-base font-heading font-bold text-[#125083] dark:text-white mb-1.5">
                     {item.title}
