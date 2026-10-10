@@ -57,7 +57,7 @@ export const STATS = [
   { value: "12,000+", label: "Coronary Angioplasties" },
   { value: "11,000+", label: "Peripheral Interventions" },
   { value: "300+", label: "Pacemaker Implantations" },
-  { value: "100+", label: "ICD & CRT Implantations" },
+  { value: "100+", label: "ICD & CRT Device Implantations" },
 ] as const;
 
 export const EXPERTISE = [

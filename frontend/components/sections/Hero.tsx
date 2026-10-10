@@ -66,11 +66,7 @@ export function Hero() {
                     aria-hidden
                     className="absolute left-1/2 top-1/2 h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2 animate-[spin_46s_linear_infinite] rounded-full border border-dashed border-secondary/30"
                   />
-                  <Heart3D className="relative h-full w-full">
-                    <div className="absolute inset-0 flex justify-center">
-                      <Heart uid="hero-heart" variant="light" className="h-full w-auto" />
-                    </div>
-                  </Heart3D>
+                 
                 </div>
               </div>
             </div>
@@ -199,7 +195,7 @@ export function Hero() {
       {/* specialties band */}
       <div
         aria-label="Clinical specialties and expertise"
-        className="relative overflow-hidden border-t border-secondary/25 border-b border-navy-2 bg-gradient-to-r from-[#07192a] via-[#0b2239] to-[#07192a] py-4 shadow-[0_4px_24px_-8px_rgba(11,34,57,0.5)] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
+        className="relative overflow-hidden border-t border-secondary/25 border-b border-navy-2 bg-linear-to-r from-[#07192a] via-navy to-[#07192a] py-4 shadow-[0_4px_24px_-8px_rgba(11,34,57,0.5)] mask-[linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
       >
         {/* Ambient aqua glow in center */}
         <div
@@ -213,7 +209,7 @@ export function Hero() {
               {SPECIALTIES.map((item) => (
                 <div
                   key={`${dup}-${item.title}`}
-                  className="group/pill inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 sm:px-5 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.3)] backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-accent/60 hover:bg-white/[0.12] hover:shadow-[0_0_22px_-4px_rgba(141,211,206,0.4)] cursor-default"
+                  className="group/pill inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 sm:px-5 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.3)] backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-accent/60 hover:bg-white/12 hover:shadow-[0_0_22px_-4px_rgba(141,211,206,0.4)] cursor-default"
                 >
                   <span className="relative flex h-2 w-2 shrink-0">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />

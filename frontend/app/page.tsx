@@ -6,11 +6,11 @@ import { Awards } from "@/components/sections/Awards";
 import { Contact } from "@/components/sections/Contact";
 import { Expertise } from "@/components/sections/Expertise";
 import { Footer } from "@/components/sections/Footer";
-import { HeartHealth } from "@/components/sections/HeartHealth";
 import { Hero } from "@/components/sections/Hero";
 import { Journey } from "@/components/sections/Journey";
 import { Leadership } from "@/components/sections/Leadership";
 import { Showcase } from "@/components/sections/Showcase";
+import { Insights } from "@/components/sections/Insights";
 import { Motion } from "@/components/Motion";
 import { MobileCta } from "@/components/MobileCta";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -31,7 +31,7 @@ export default function Home() {
         <Journey />
         <Awards />
         <Leadership />
-        <HeartHealth />
+        <Insights />
         <Contact />
       </main>
       <Footer />

@@ -18,9 +18,9 @@ export function About() {
       aria-labelledby="about-title"
       className="relative isolate overflow-hidden bg-offwhite pb-12 pt-6 lg:py-0"
     >
-      <div className="lg:grid lg:min-h-[620px] lg:grid-cols-[1.08fr_1fr]">
+      <div className="lg:grid lg:min-h-155 lg:grid-cols-[1.08fr_1fr]">
         {/* portrait */}
-        <div className="relative mx-5 aspect-[4/3.5] overflow-hidden rounded-2xl sm:mx-8 sm:aspect-[16/9] lg:mx-0 lg:aspect-auto lg:rounded-none">
+        <div className="relative mx-5 aspect-4/3.5 overflow-hidden rounded-2xl sm:mx-8 sm:aspect-video lg:mx-0 lg:aspect-auto lg:rounded-none">
           <Image
             src="/images/dr-chaitanya-cathlab.webp"
             alt="Dr. B. Vijaya Chaitanya in the cardiac catheterisation laboratory at Medstar Hospitals"
@@ -30,17 +30,17 @@ export function About() {
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-offwhite/70 to-transparent lg:hidden"
+            className="absolute inset-x-0 bottom-0 h-1/4 bg-linear-to-t from-offwhite/70 to-transparent lg:hidden"
           />
           <div
             aria-hidden
-            className="absolute inset-y-0 right-0 hidden w-1/4 bg-gradient-to-l from-offwhite/40 to-transparent lg:block"
+            className="absolute inset-y-0 right-0 hidden w-1/4 bg-linear-to-l from-offwhite/40 to-transparent lg:block"
           />
         </div>
 
         {/* copy */}
         <Reveal className="about-panel relative z-10 bg-offwhite lg:-ml-28 lg:flex lg:flex-col lg:justify-center lg:py-20 lg:pl-32 lg:pr-12 xl:pr-20">
-          <div className="container-x lg:mx-0 lg:max-w-[560px] lg:p-0">
+          <div className="container-x lg:mx-0 lg:max-w-140 lg:p-0">
             <blockquote className="mt-2 flex items-end justify-between gap-5 lg:hidden">
               <p className="font-serif text-[19px] leading-[1.45] text-ink">
                 “Combining experience with contemporary techniques to make every decision more
@@ -78,7 +78,7 @@ export function About() {
             const Icon = featureIcons[f.id];
             return (
               <Reveal as="li" key={f.id} delay={i * 80} className="flex items-center gap-4">
-                <span className="inline-flex h-[62px] w-[62px] shrink-0 items-center justify-center rounded-full bg-white text-secondary shadow-[0_14px_30px_-14px_rgba(60,40,20,0.4)]">
+                <span className="inline-flex h-15.5 w-15.5 shrink-0 items-center justify-center rounded-full bg-white text-secondary shadow-[0_14px_30px_-14px_rgba(60,40,20,0.4)]">
                   <Icon />
                 </span>
                 <div>

@@ -181,10 +181,14 @@ export function Motion() {
 
         /* ---------------- odometer: digits roll up to their value ---------------- */
         all("[data-odometer]").forEach((el, n) => {
-          const strips = Array.from(el.querySelectorAll<HTMLElement>("[data-digit]")).map((col) => ({
-            strip: col.querySelector<HTMLElement>("[data-strip]"),
-            to: Number(col.dataset.to ?? 0),
-          }));
+          const strips = Array.from(el.querySelectorAll<HTMLElement>("[data-digit]")).map((col) => {
+            const strip = col.querySelector<HTMLElement>("[data-strip]");
+            if (strip) strip.style.transform = "none";
+            return {
+              strip,
+              to: Number(col.dataset.to ?? 0),
+            };
+          });
           // rewind to 0 (the server HTML is parked on the final value for crawlers / no-JS)
           gsap.set(
             strips.map((s) => s.strip),
