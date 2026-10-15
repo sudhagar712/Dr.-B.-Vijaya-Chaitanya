@@ -7,10 +7,14 @@ const HEART_IMAGE = "/heart.png";
 const BPM_OPTIONS = [60, 72, 98, 115];
 
 export function HeartbeatExperience() {
+  const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const visualRef = useRef<HTMLElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
   const bpmRef = useRef(72);
   const playingRef = useRef(false);
+  const inViewRef = useRef(false);
+  const userPausedRef = useRef(false);
+
   const [bpm, setBpm] = useState(72);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(45);
@@ -19,6 +23,7 @@ export function HeartbeatExperience() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const nextBeatRef = useRef(0);
 
+  // Initialize WebGL Three.js inside the circular frame
   useEffect(() => {
     const canvas = canvasRef.current;
     const host = visualRef.current;
@@ -26,12 +31,13 @@ export function HeartbeatExperience() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-    camera.position.set(0, 0, 8);
+    camera.position.set(0, -0.05, 7.8);
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.18;
+
     scene.add(new THREE.AmbientLight(0xffffff, 1.9));
     const key = new THREE.DirectionalLight(0xffd2d0, 2.2);
     key.position.set(-3, 4, 6);
@@ -47,11 +53,10 @@ export function HeartbeatExperience() {
       loaded.colorSpace = THREE.SRGBColorSpace;
       const aspect = loaded.image.width / loaded.image.height;
       heartMesh = new THREE.Mesh(
-        new THREE.PlaneGeometry(4.35 * aspect, 4.35),
+        new THREE.PlaneGeometry(3.95 * aspect, 3.95),
         new THREE.MeshBasicMaterial({
           map: loaded,
           transparent: true,
-          alphaTest: 0.015,
           side: THREE.DoubleSide,
           toneMapped: false,
         }),
@@ -59,28 +64,46 @@ export function HeartbeatExperience() {
       heart.add(heartMesh);
     });
 
-    const particles: number[] = [];
-    for (let i = 0; i < 420; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 2.1 + Math.random() * 2.9;
-      particles.push(Math.cos(angle) * radius, (Math.random() - 0.5) * 5, Math.sin(angle) * radius - 1.4);
-    }
+    // Dual-tone particles matching red and cyan vessels
     const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute("position", new THREE.Float32BufferAttribute(particles, 3));
+    const positions: number[] = [];
+    const colors: number[] = [];
+    const colorRed = new THREE.Color(0xff4056);
+    const colorCyan = new THREE.Color(0x00d2ff);
+
+    for (let i = 0; i < 360; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 0.8 + Math.random() * 2.1;
+      positions.push(Math.cos(angle) * radius, (Math.random() - 0.5) * 4.2, Math.sin(angle) * radius - 0.7);
+      const isCyan = Math.random() > 0.65;
+      const c = isCyan ? colorCyan : colorRed;
+      colors.push(c.r, c.g, c.b);
+    }
+
+    particleGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    particleGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
     const dust = new THREE.Points(
       particleGeometry,
-      new THREE.PointsMaterial({ color: 0xff6674, size: 0.018, transparent: true, opacity: 0.48, depthWrite: false }),
+      new THREE.PointsMaterial({
+        size: 0.022,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.55,
+        depthWrite: false,
+      }),
     );
     scene.add(dust);
 
     const resize = () => {
       const width = host.clientWidth;
       const height = host.clientHeight;
+      if (width === 0 || height === 0) return;
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
-      camera.position.z = window.innerWidth < 850 ? 8.8 : 8;
+      camera.position.z = window.innerWidth < 850 ? 8.2 : 7.8;
       camera.updateProjectionMatrix();
     };
+
     const observer = new ResizeObserver(resize);
     observer.observe(host);
     resize();
@@ -94,6 +117,7 @@ export function HeartbeatExperience() {
       const pulse = (center: number, width: number) => Math.exp(-Math.pow((x - center) / width, 2));
       return 1 + 0.055 * pulse(0.05, 0.035) + 0.105 * pulse(0.105, 0.045) + 0.038 * pulse(0.18, 0.065);
     };
+
     const animate = (now: number) => {
       frame = requestAnimationFrame(animate);
       const dt = Math.min((now - previous) / 1000, 0.05);
@@ -121,14 +145,19 @@ export function HeartbeatExperience() {
     };
   }, []);
 
-  const setBpmValue = (value: number) => {
-    bpmRef.current = value;
-    setBpm(value);
-    if (playingRef.current && audioRef.current) {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      nextBeatRef.current = audioRef.current.currentTime + 0.04;
-      scheduleLoop();
+  const ensureAudioContext = () => {
+    if (!audioRef.current) {
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const context = new AudioCtx();
+      const master = context.createGain();
+      master.gain.value = volume / 100;
+      master.connect(context.destination);
+      audioRef.current = context;
+      masterRef.current = master;
     }
+    return audioRef.current;
   };
 
   const thump = (when: number, frequency: number, duration: number, gain: number, cutoff: number) => {
@@ -166,26 +195,106 @@ export function HeartbeatExperience() {
     timerRef.current = setTimeout(scheduleLoop, 35);
   };
 
-  const togglePlayback = async () => {
-    if (playingRef.current) {
-      playingRef.current = false;
-      setPlaying(false);
-      if (timerRef.current) clearTimeout(timerRef.current);
-      return;
-    }
-    if (!audioRef.current) {
-      const context = new AudioContext();
-      const master = context.createGain();
-      master.gain.value = volume / 100;
-      master.connect(context.destination);
-      audioRef.current = context;
-      masterRef.current = master;
-    }
-    await audioRef.current.resume();
+  const startHeartbeat = async () => {
     playingRef.current = true;
     setPlaying(true);
-    nextBeatRef.current = audioRef.current.currentTime + 0.07;
-    scheduleLoop();
+
+    try {
+      const context = ensureAudioContext();
+      if (context.state === "suspended") {
+        await context.resume();
+      }
+      if (timerRef.current) clearTimeout(timerRef.current);
+      nextBeatRef.current = context.currentTime + 0.05;
+      scheduleLoop();
+    } catch {
+      // Browser autoplay restriction handling:
+      // Listen to first user gesture (scroll, click, touch) to unlock audio
+      const unlockAudio = async () => {
+        window.removeEventListener("pointerdown", unlockAudio);
+        window.removeEventListener("touchstart", unlockAudio);
+        window.removeEventListener("scroll", unlockAudio);
+        window.removeEventListener("keydown", unlockAudio);
+        if (inViewRef.current && !userPausedRef.current) {
+          try {
+            const ctx = ensureAudioContext();
+            if (ctx.state === "suspended") await ctx.resume();
+            if (timerRef.current) clearTimeout(timerRef.current);
+            nextBeatRef.current = ctx.currentTime + 0.05;
+            scheduleLoop();
+          } catch {}
+        }
+      };
+      window.addEventListener("pointerdown", unlockAudio, { once: true });
+      window.addEventListener("touchstart", unlockAudio, { once: true });
+      window.addEventListener("scroll", unlockAudio, { once: true, passive: true });
+      window.addEventListener("keydown", unlockAudio, { once: true });
+    }
+  };
+
+  const pauseHeartbeat = () => {
+    playingRef.current = false;
+    setPlaying(false);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    if (audioRef.current && audioRef.current.state === "running") {
+      audioRef.current.suspend().catch(() => {});
+    }
+  };
+
+  // Auto-play when section enters viewport, auto-pause when section leaves viewport
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          inViewRef.current = true;
+          if (!userPausedRef.current) {
+            startHeartbeat();
+          }
+        } else {
+          inViewRef.current = false;
+          pauseHeartbeat();
+          // Reset manual pause flag so next time user scrolls into this section, it plays again
+          userPausedRef.current = false;
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      pauseHeartbeat();
+    };
+  }, []);
+
+  const togglePlayback = async () => {
+    if (playingRef.current) {
+      userPausedRef.current = true;
+      pauseHeartbeat();
+    } else {
+      userPausedRef.current = false;
+      await startHeartbeat();
+    }
+  };
+
+  const setBpmValue = (value: number) => {
+    bpmRef.current = value;
+    setBpm(value);
+    if (playingRef.current && audioRef.current) {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      nextBeatRef.current = audioRef.current.currentTime + 0.04;
+      scheduleLoop();
+    }
   };
 
   const changeVolume = (value: number) => {
@@ -196,9 +305,12 @@ export function HeartbeatExperience() {
   };
 
   return (
-    <section id="heartbeat-experience" className={`pulse-app${playing ? " is-playing" : ""} bg-[#000000]`}>
+    <section
+      id="heartbeat-experience"
+      ref={sectionRef}
+      className={`pulse-app${playing ? " is-playing" : ""} bg-[#000000]`}
+    >
       <div className="pulse-noise" />
-     <div></div>
 
       <main className="pulse-main">
         <section className="pulse-copy">
@@ -226,9 +338,23 @@ export function HeartbeatExperience() {
           </div>
         </section>
 
-        <section className="pulse-visual" ref={visualRef} aria-label="Animated anatomical heart">
-          <div className="pulse-halo" />
-          <canvas ref={canvasRef} />
+        <section className="pulse-visual" aria-label="Animated anatomical heart">
+          <div className="pulse-circle-container">
+            {/* Outer telemetry orbit rings with cyan and crimson glow */}
+            <div className="pulse-orbit-ring pulse-orbit-outer" />
+            <div className="pulse-orbit-ring pulse-orbit-middle" />
+
+            {/* Glowing circular halo behind the heart */}
+            <div className="pulse-circle-halo" />
+
+            {/* Main Circular Container with Glowing Border */}
+            <div className="pulse-circle-frame" ref={visualRef}>
+              <canvas ref={canvasRef} />
+              {/* Inner subtle vignette to seamlessly blend edges */}
+              <div className="pulse-circle-inner-shadow" />
+            </div>
+          </div>
+
           <div className="pulse-visual-label">CARDIAC CYCLE · {bpm} BPM</div>
         </section>
       </main>
@@ -286,8 +412,8 @@ export function HeartbeatExperience() {
           min-height: 650px;
           height: auto;
           display: grid;
-          grid-template-rows: 78px 1fr 102px;
-          padding: 0 5.5vw;
+          grid-template-rows: 1fr 102px;
+          padding: 40px 5.5vw 0;
           overflow: hidden;
           background: #000000;
           color: #f4f2f4;
@@ -306,61 +432,20 @@ export function HeartbeatExperience() {
           opacity: .08;
           z-index: -1;
         }
-        .pulse-top,
         .pulse-footer {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid #ffffff18;
-        }
-        .pulse-footer {
           border: 0;
           border-top: 1px solid #ffffff18;
+          padding: 20px 0;
         }
-        .pulse-brand,
-        .pulse-live,
         .pulse-readout,
         .pulse-controls,
         .pulse-volume,
         .pulse-bpm-options {
           display: flex;
           align-items: center;
-        }
-        .pulse-brand {
-          gap: 12px;
-          font-size: 13px;
-          letter-spacing: .2em;
-          font-weight: 700;
-        }
-        .pulse-mark {
-          width: 30px;
-          height: 30px;
-          border: 1px solid #ff46576b;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          color: var(--red);
-        }
-        .pulse-brand-muted {
-          color: #77747d;
-        }
-        .pulse-live {
-          gap: 9px;
-          color: #a5a2aa;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: .12em;
-        }
-        .pulse-live i {
-          width: 6px;
-          height: 6px;
-          background: var(--red);
-          border-radius: 50%;
-          box-shadow: 0 0 12px var(--red);
-          animation: pulseBlink 1.5s infinite;
-        }
-        @keyframes pulseBlink {
-          50% { opacity: .35; }
         }
         .pulse-main {
           display: grid;
@@ -385,7 +470,7 @@ export function HeartbeatExperience() {
           letter-spacing: .16em;
         }
         .pulse-eyebrow {
-          color: var(--secondary);
+          color: var(--secondary, #38bdf8);
           text-transform: uppercase;
           margin-bottom: 23px;
         }
@@ -440,54 +525,115 @@ export function HeartbeatExperience() {
           border-color: var(--red);
           box-shadow: 0 5px 20px #ff334e3b;
         }
+
+        /* Circular Visual Frame with Glowing Border */
         .pulse-visual {
-          height: min(70vh, 680px);
-          min-height: 420px;
           position: relative;
-          display: grid;
-          place-items: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 480px;
+          padding: 20px 0;
         }
-        .pulse-visual:before {
-          content: '';
-          position: absolute;
-          width: min(39vw, 490px);
-          height: min(39vw, 490px);
+        .pulse-circle-container {
+          position: relative;
+          width: min(80vw, 440px);
+          height: min(80vw, 440px);
+          aspect-ratio: 1 / 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .pulse-circle-frame {
+          position: relative;
+          width: 100%;
+          height: 100%;
           border-radius: 50%;
-          background: radial-gradient(circle, #bd142b30, transparent 70%);
-          filter: blur(12px);
+          overflow: hidden;
+          background: radial-gradient(circle at center, #140508 0%, #060204 65%, #000000 100%);
+          border: 3px solid rgba(255, 51, 78, 0.75);
+          box-shadow: 
+            0 0 30px rgba(255, 51, 78, 0.35),
+            0 0 65px rgba(0, 210, 255, 0.2),
+            inset 0 0 40px rgba(255, 30, 60, 0.28),
+            inset 0 0 80px rgba(0, 0, 0, 0.85);
+          transition: border-color 0.4s ease, box-shadow 0.4s ease;
+          z-index: 2;
         }
-        .pulse-visual canvas {
+        .is-playing .pulse-circle-frame {
+          border-color: rgba(255, 60, 85, 0.95);
+          box-shadow: 
+            0 0 40px rgba(255, 51, 78, 0.55),
+            0 0 85px rgba(0, 210, 255, 0.32),
+            inset 0 0 45px rgba(255, 30, 60, 0.35),
+            inset 0 0 80px rgba(0, 0, 0, 0.85);
+        }
+        .pulse-circle-frame canvas {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
+          display: block;
+          border-radius: 50%;
+        }
+        .pulse-circle-inner-shadow {
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          pointer-events: none;
+          box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9);
+          z-index: 3;
+        }
+        .pulse-orbit-middle {
+          position: absolute;
+          inset: -14px;
+          border-radius: 50%;
+          border: 1.5px solid rgba(0, 210, 255, 0.32);
+          pointer-events: none;
           z-index: 1;
         }
-        .pulse-halo {
+        .pulse-orbit-outer {
           position: absolute;
-          width: min(34vw, 415px);
-          height: min(34vw, 415px);
+          inset: -30px;
           border-radius: 50%;
-          border: 1px solid #ff3e5618;
-          box-shadow: 0 0 65px #fa314012, inset 0 0 45px #fa314009;
+          border: 1px dashed rgba(255, 65, 85, 0.28);
+          pointer-events: none;
+          z-index: 1;
+          animation: orbitRotate 60s linear infinite;
         }
-        .pulse-halo:before,
-        .pulse-halo:after {
-          content: '';
+        @keyframes orbitRotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .pulse-circle-halo {
           position: absolute;
-          border: 1px solid #ffffff10;
+          inset: -20px;
           border-radius: 50%;
-          inset: 13%;
+          background: radial-gradient(circle, rgba(255, 40, 70, 0.28) 0%, rgba(0, 210, 255, 0.12) 45%, transparent 70%);
+          filter: blur(20px);
+          pointer-events: none;
+          z-index: 0;
+          opacity: 0.6;
+          transition: opacity 0.5s ease;
         }
-        .pulse-halo:after {
-          inset: -10%;
-          border-color: #ff3e5610;
+        .is-playing .pulse-circle-halo {
+          opacity: 1;
+          animation: haloPulse 1.4s ease-in-out infinite alternate;
+        }
+        @keyframes haloPulse {
+          0% { transform: scale(0.96); opacity: 0.65; }
+          100% { transform: scale(1.06); opacity: 1; }
         }
         .pulse-visual-label {
-          position: absolute;
-          bottom: 5%;
-          color: #77737d;
+          margin-top: 24px;
+          color: #8a8692;
+          font-size: 11px;
+          letter-spacing: .18em;
+          font-weight: 600;
+          text-align: center;
         }
+
         .pulse-readout {
           gap: 15px;
         }
@@ -575,17 +721,18 @@ export function HeartbeatExperience() {
           width: 18px;
           height: 18px;
         }
+
         @media (max-width: 850px) {
           .pulse-app {
             min-height: 720px;
             height: auto;
-            padding: 24px 7vw;
-            grid-template-rows: auto 1fr auto;
+            padding: 30px 7vw 0;
+            grid-template-rows: 1fr auto;
             gap: 20px;
           }
           .pulse-main {
             grid-template-columns: 1fr;
-            grid-template-rows: auto minmax(280px, 1fr);
+            grid-template-rows: auto auto;
             padding-top: 16px;
           }
           .pulse-copy {
@@ -603,26 +750,24 @@ export function HeartbeatExperience() {
           }
           .pulse-visual {
             grid-row: 2;
-            min-height: 280px;
-            height: 340px;
+            min-height: 340px;
             margin-top: 10px;
           }
-          .pulse-halo {
-            width: min(68vw, 320px);
-            height: min(68vw, 320px);
+          .pulse-circle-container {
+            width: min(78vw, 320px);
+            height: min(78vw, 320px);
           }
-          .pulse-visual:before {
-            width: min(72vw, 360px);
-            height: min(72vw, 360px);
-          }
-          .pulse-visual-label { bottom: 1%; }
           .pulse-state { display: none; }
           .pulse-wave { margin-left: 0; }
         }
         @media (max-width: 440px) {
-          .pulse-app { padding: 20px 5vw; }
+          .pulse-app { padding: 24px 5vw 0; }
           .pulse-copy h1 { font-size: 38px; }
-          .pulse-visual { min-height: 260px; height: 300px; }
+          .pulse-visual { min-height: 290px; }
+          .pulse-circle-container {
+            width: min(80vw, 270px);
+            height: min(80vw, 270px);
+          }
           .pulse-controls { gap: 12px; }
           .pulse-volume input { width: 60px; }
           .pulse-readout { gap: 8px; }
