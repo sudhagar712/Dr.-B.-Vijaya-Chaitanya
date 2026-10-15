@@ -20,7 +20,7 @@ export function About() {
       aria-labelledby="about-title"
       className="relative isolate bg-offwhite pb-16 pt-6 lg:py-0"
     >
-      <div className="lg:grid lg:grid-cols-[1.08fr_1fr] lg:items-start">
+      <div className="lg:grid lg:grid-cols-[1.08fr_1fr] lg:items-start  md:gap-10">
         {/* portrait: stays fixed/sticky on desktop while scrolling right-side points */}
         <div className="relative mx-5 aspect-4/3.5 overflow-hidden rounded-2xl sm:mx-8 sm:aspect-video lg:sticky lg:top-0 lg:mx-0 lg:aspect-auto lg:h-screen lg:max-h-230 lg:min-h-150 lg:self-start lg:rounded-none">
           <Image

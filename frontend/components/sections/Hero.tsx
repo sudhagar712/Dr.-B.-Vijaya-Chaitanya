@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HERO_STATS, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import { BuildingHeartIcon, HeartPulseIcon } from "../icons";
 import { IntroVideo } from "../IntroVideo";
 import { ButtonLink } from "../ui";
@@ -30,12 +30,12 @@ export function Hero() {
           <div className="absolute inset-0 bg-[radial-gradient(75%_85%_at_74%_42%,#eaf6f5_0%,#ffffff_68%)]" />
           <div className="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#175486_0.9px,transparent_0.9px)] bg-size-[26px_26px] mask-[radial-gradient(48%_62%_at_76%_42%,#000,transparent)]" />
           <div className="absolute -left-32 top-[8%] h-105 w-105 rounded-full bg-accent/20 blur-3xl" />
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-white to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-lism:h-120om-white to-transparent" />
         </div>
 
         <div className="container-x flex flex-col lg:grid lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] lg:items-center lg:gap-8 xl:gap-12">
           {/* ---------- Visual: portrait + heart (first on mobile, right column on desktop) ---------- */}
-          <div className="relative order-first -mx-5 h-96 sm:mx-0 sm:h-[480px] lg:order-last lg:h-[clamp(620px,86vh,840px)] lg:min-h-0">
+          <div className="relative order-first -mx-5 h-96 sm:mx-0 sm:h-120 lg:order-last lg:h-[clamp(620px,86vh,840px)] lg:min-h-0">
             <div
               aria-hidden
               data-pointer="-8"
@@ -61,7 +61,6 @@ export function Hero() {
             </div>
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-linear-to-t from-white via-white/70 to-transparent lg:hidden" />
 
-           
           </div>
 
           {/* ---------- Copy ---------- */}
@@ -110,21 +109,6 @@ export function Hero() {
                 Scroll
               </a>
             </div>
-
-            {/* mobile / tablet: quick stats strip */}
-            <dl
-              data-hero="cta"
-              className="relative z-20 mt-9 grid grid-cols-3 divide-x divide-line rounded-2xl border border-line bg-white py-5 text-center shadow-[0_18px_40px_-26px_rgba(16,42,67,0.35)] lg:hidden"
-            >
-              {HERO_STATS.map((s) => (
-                <div key={s.label} className="px-2">
-                  <dd className="font-serif text-[18px] font-light leading-none text-ink sm:text-2xl">
-                    {s.value}
-                  </dd>
-                  <dt className="mt-2 text-[10.5px] font-light leading-tight text-slate">{s.label}</dt>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </section>

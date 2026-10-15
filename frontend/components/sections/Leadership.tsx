@@ -20,14 +20,14 @@ export function Leadership() {
         className="absolute inset-0 -z-10 bg-[radial-gradient(50%_60%_at_85%_15%,rgba(141,211,206,0.28),transparent_70%)]"
       />
 
-      <div className="container-x grid items-center gap-10 pt-16 lg:min-h-[560px] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8 lg:py-0">
-        <Reveal className="lg:max-w-[470px] lg:py-20">
-          <p className="eyebrow !text-accent">Leadership</p>
+      <div className="container-x grid items-center gap-10 pt-16 pb-12 sm:pb-16 lg:min-h-140 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-8 lg:py-0">
+        <Reveal className="lg:max-w-117.5 lg:py-20">
+          <p className="eyebrow text-white">Leadership</p>
           <span className="rule mt-4" aria-hidden />
           <h2
             id="leadership-title"
             data-g="split"
-            className="display mt-6 text-[clamp(1.9rem,3vw,2.8rem)] leading-[1.15]"
+            className="display mt-6 text-[clamp(1.9rem,3vw,2.8rem)] text-white leading-[1.15]"
           >
             Building Better
             <br />
@@ -55,7 +55,7 @@ export function Leadership() {
             data-g="parallax"
             data-speed="0.03"
             data-scale="1"
-            className="h-auto w-full max-w-[760px] drop-shadow-[0_30px_50px_rgba(0,0,0,0.4)] [mask-image:linear-gradient(to_right,transparent_0%,#000_8%,#000_92%,transparent_100%)]"
+            className="h-auto w-full max-w-190 drop-shadow-[0_30px_50px_rgba(0,0,0,0.4)] mask-[linear-gradient(to_right,transparent_0%,#000_8%,#000_92%,transparent_100%)]"
           />
         </div>
       </div>
