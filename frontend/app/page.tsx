@@ -8,7 +8,6 @@ import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Journey } from "@/components/sections/Journey";
 import { Leadership } from "@/components/sections/Leadership";
-
 import { Insights } from "@/components/sections/Insights";
 import { HeartbeatExperience } from "@/components/sections/HeartbeatExperience";
 import { FAQ } from "@/components/sections/FAQ";
@@ -25,14 +24,13 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Stats />
-        <Expertise />
         <About />
+        <Expertise />
         <Journey />
         <Awards />
         <Leadership />
         <Insights />
         <HeartbeatExperience />
-     
         <FAQ />
         <Contact />
       </main>

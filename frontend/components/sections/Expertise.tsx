@@ -47,10 +47,7 @@ export function Expertise() {
         {/* ========================================================= */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-10 md:pb-14 border-b border-[#dce8f3]">
           <div className="max-w-3xl">
-            {/* Small tracking uppercase eyebrow */}
-            <p className="text-[11px] sm:text-[12px] font-semibold tracking-[0.28em] uppercase text-secondary mb-3">
-              SPECIALISED CARDIAC CARE
-            </p>
+
 
             {/* Main Headline + Blue ECG Heartbeat Wave — Locked on single center line */}
             <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4">
@@ -66,8 +63,7 @@ export function Expertise() {
                 </span>
               </h2>
 
-              {/* Seamless Blue ECG Wave connected to Heart */}
-              <HeaderEcgHeartArt className="h-12 sm:h-15 lg:h-18 self-center -my-2" />
+             
             </div>
 
             {/* Subtitle */}

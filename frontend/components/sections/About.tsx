@@ -64,27 +64,12 @@ export function About() {
 
             <div className="mt-6 space-y-4 lg:mt-8 lg:space-y-5">
               {ABOUT_POINTS.map((text, idx) => (
-                <div key={idx} className="flex items-start gap-3.5 sm:gap-4">
-                  <span
-                    className="mt-1 flex h-5 w-5 sm:h-5.5 sm:w-5.5 shrink-0 items-center justify-center rounded-full bg-secondary/15 text-secondary shadow-xs"
-                    aria-hidden
-                  >
-                    <svg
-                      className="h-3 w-3 sm:h-3.5 sm:w-3.5"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="2.8 7.2 5.6 10 11.2 4" />
-                    </svg>
-                  </span>
-                  <p className="text-[13.5px] sm:text-[14px] lg:text-[14.5px] font-normal leading-[1.85] text-slate">
-                    {text}
-                  </p>
-                </div>
+                <p
+                  key={idx}
+                  className="text-[13.5px] sm:text-[14px] lg:text-[14.5px] font-normal leading-[1.85] text-slate"
+                >
+                  {text}
+                </p>
               ))}
             </div>
 
